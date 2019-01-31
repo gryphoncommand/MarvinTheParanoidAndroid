@@ -6,6 +6,7 @@ import oi
 import argparse
 
 from commands.followjoystick import FollowJoystick
+from commands.intake import Intake
 # parser = argparse.ArgumentParser()
 # parser.add_argument("--enabletank",
 #                     help=
@@ -22,6 +23,7 @@ class Penumbra(CommandBasedRobot):
         oi.init()
         self.teleopProgram = wpilib.command.CommandGroup()
         self.teleopProgram.addParallel(FollowJoystick())
+        self.teleopProgram.addParallel(Intake())
 
     def teleopInit(self):
         self.teleopProgram.start()

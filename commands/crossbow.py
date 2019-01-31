@@ -8,19 +8,38 @@ import wpilib
 length = 5
 
 
-class PullIntake(Command):
+# class PullIntake(Command):
 
+#     def __init__(self):
+#         super().__init__('PullIntake')
+#         self.isDone = False
+
+#     def initialize(self):
+#         pass
+
+#     def execute(self):
+#         subsystems.mechanisms.pull_intake()
+#         self.isDone = True
+
+#     def isFinished(self):
+#         return self.isDone
+
+class PullIntake(Command):
     def __init__(self):
         super().__init__('PullIntake')
-        self.isDone = False
-
-    def initialize(self):
-        pass
+        self.default = False
+        subsystems.mechanisms.pull_intake(wpilib.DoubleSolenoid.Value.kOff)
 
     def execute(self):
-        subsystems.mechanisms.pull_intake()
+        print('In Crossbow::execute()')
+        print(self.default)
+        if self.default:
+            subsystems.mechanisms.pull_intake(wpilib.DoubleSolenoid.Value.kForward)
+        else:
+            subsystems.mechanisms.pull_intake(wpilib.DoubleSolenoid.Value.kReverse)
+        self.default = not self.default
         self.isDone = True
-
+    
     def isFinished(self):
         return self.isDone
 
