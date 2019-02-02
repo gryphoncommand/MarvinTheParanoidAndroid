@@ -17,8 +17,11 @@ class Intake(Command):
         pass
 
     def execute(self):
-        power = (oi.joystick.getRawAxis(axes.R_t) -
-                 oi.joystick.getRawAxis(axes.L_t)) / 2.0
+        if oi.joystick.getRawButton(7):
+            power = 0.5
+        else: power = 0.0
+        # power = (oi.joystick.getRawAxis(axes.R_t) -
+        #          oi.joystick.getRawAxis(axes.L_t)) / 2.0
         subsystems.mechanisms.set_intake(power)
 
     def end(self):
