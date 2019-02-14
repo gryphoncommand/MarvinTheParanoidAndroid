@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{a782cc09-714b-4424-9472-81b900047a5c}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>oi.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="commands\alignhatch.py" />
+    <Compile Include="commands\crossbow.py" />
+    <Compile Include="commands\drivetimed.py" />
+    <Compile Include="commands\followjoystick.py" />
+    <Compile Include="commands\gearshift.py" />
+    <Compile Include="commands\intake.py" />
+    <Compile Include="commands\invertmotors.py" />
+    <Compile Include="commands\__init__.py" />
+    <Compile Include="hardware\navx.py" />
+    <Compile Include="oi.py" />
+    <Compile Include="physics.py" />
+    <Compile Include="robot.py" />
+    <Compile Include="robotmap.py" />
+    <Compile Include="subsystems\drivetrain.py" />
+    <Compile Include="subsystems\mechanisms.py" />
+    <Compile Include="subsystems\__init__.py" />
+    <Compile Include="tests\pyfrc_test.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="commands" />
+    <Folder Include="hardware" />
+    <Folder Include="subsystems" />
+    <Folder Include="tests" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>

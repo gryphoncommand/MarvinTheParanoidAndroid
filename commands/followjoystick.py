@@ -79,16 +79,6 @@ class FollowJoystick(Command):
         if self.stick.getRawButton(2):
             self.ahrs.reset()
             print('joy 2')
-        if self.stick.getRawButton(3):
-            self.turnController.setSetpoint(0.0)
-            rotateToAngle = True
-            print('joy 3')
-        elif self.stick.getRawButton(4):
-            print('joy 4')
-
-        elif self.stick.getRawButton(5):
-            self.turnController.setSetpoint(-90.0)
-            rotateToAngle = True
 
         if rotateToAngle:
             self.turnController.enable()
@@ -102,7 +92,7 @@ class FollowJoystick(Command):
         subsystems.drivetrain.driveCartesian(
                 inputNoise(oi.joystick.getX()*axes.motor_inversion[0]),
                 inputNoise(oi.joystick.getY()*axes.motor_inversion[1]),
-                currentRotationRate*axes.motor_inversion[2],0)
+                currentRotationRate*axes.motor_inversion[2],self.ahrs.getAngle())
         #self.ahrs.getAngle()
     def pidWrite(self, output):
         """This function is invoked periodically by the PID Controller,
@@ -118,22 +108,3 @@ class FollowJoystick(Command):
 
     def interrupted(self):
         self.end()
-
-
-class GearShift(Command):
-    def __init__(self):
-        super().__init__('GearShift')
-        self.default = False
-        subsystems.mechanisms.shift_gears(wpilib.DoubleSolenoid.Value.kOff)
-
-    def execute(self):
-        print('In Gearshift::execute()')
-        if self.default:
-            subsystems.mechanisms.shift_gears(wpilib.DoubleSolenoid.Value.kForward)
-        else:
-            subsystems.mechanisms.shift_gears(wpilib.DoubleSolenoid.Value.kReverse)
-        self.default = not self.default
-        self.isDone = True
-    
-    def isFinished(self):
-        return self.isDone

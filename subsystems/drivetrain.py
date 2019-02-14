@@ -1,9 +1,9 @@
 import wpilib
 from wpilib.command.subsystem import Subsystem
 from ctre import WPI_TalonSRX
-
+from commands.followjoystick import FollowJoystick
 from wpilib.drive import MecanumDrive
-
+from robotmap import axes
 
 class Drivetrain(Subsystem):
 
@@ -25,9 +25,19 @@ class Drivetrain(Subsystem):
 
         self.drive.setSafetyEnabled(True)
 
-    def driveCartesian(self, ySpeed, xSpeed, zRotation, gyroAngle=0.0):
-        self.drive.driveCartesian(ySpeed, xSpeed, zRotation, gyroAngle)
+    def inputNoise(self,input):
+        if(abs(input) < 0.03):
+            input = 0
+        return input
 
+    def driveCartesian(self, xSpeed, ySpeed, zRotation, gyroAngle=0.0):
+        xSpeed = self.inputNoise(xSpeed) * axes.motor_inversion[0]
+        ySpeed = self.inputNoise(ySpeed) * axes.motor_inversion[1]
+        zRotation = zRotation * axes.motor_inversion[2]
+
+        self.drive.driveCartesian(xSpeed, ySpeed, zRotation, gyroAngle)
+
+    #recent changes
     def initDefaultCommand(self):
         self.setDefaultCommand(FollowJoystick())
 
