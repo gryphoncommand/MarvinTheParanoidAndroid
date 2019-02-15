@@ -19,7 +19,7 @@ axes.R_y = 5
 axes.L_t = 3
 axes.R_t = 4
 
-axes.motor_inversion = [1,1,-1]
+axes.motor_inversion = [-1,1,-1]
 
 
 class NavXType(Enum):

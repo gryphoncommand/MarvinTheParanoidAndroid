@@ -27,9 +27,7 @@ class TurnDrive(Command):
                                                  rotationRate,
                                                  0)
 
-        self.source = subsystems.smartdashboard.getNumber("target_x", 0.5)
-        print(self.source)
-        src = PIDHatchSource(self.source)
+        src = PIDHatchSource()
         
         self.kP = 0.75
         self.kI = 0.00

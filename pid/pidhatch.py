@@ -1,13 +1,14 @@
 from wpilib.analogpotentiometer import AnalogPotentiometer
 from wpilib.interfaces.pidsource import PIDSource
-
+import subsystems
 
 class PIDHatchSource(PIDSource):
-    def __init__(self, _source):
-        self.source = _source
+    def __init__(self):
+        self.thingie = 1
 
     def pidGet(self):
-        source = self.source
+        source = subsystems.smartdashboard.getNumber("target_x", 0.5)
+
         print("Vision Source: ", source)
         return source
 

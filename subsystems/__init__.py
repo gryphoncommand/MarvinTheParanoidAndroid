@@ -17,5 +17,6 @@ def init():
     drivetrain = Drivetrain()
     mechanisms = Mechanisms()
 
+    NetworkTables.initialize()
     smartdashboard = NetworkTables.getTable('SmartDashboard')
 

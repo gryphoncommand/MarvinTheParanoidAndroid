@@ -71,10 +71,16 @@ class FollowJoystick(Command):
     def initalize(self):
         self.stime = time.time()
 
+    def dumpInfo(self, x_speed, y_speed, z_speed, angle):
+        subsystems.smartdashboard.putNumber("x_speed", x_speed)
+        subsystems.smartdashboard.putNumber("y_speed", y_speed)
+        subsystems.smartdashboard.putNumber("z_speed", z_speed)
+        subsystems.smartdashboard.putNumber("angle", angle)
 
     def execute(self):
-        print("NavX Gyro", self.ahrs.getYaw(), self.ahrs.getAngle())
+        # print("NavX Gyro", self.ahrs.getYaw(), self.ahrs.getAngle())
         rotateToAngle = False
+
 
         if self.stick.getRawButton(2):
             self.ahrs.reset()
@@ -88,11 +94,11 @@ class FollowJoystick(Command):
             currentRotationRate = self.stick.getTwist()
             
         #set motors
-
+        self.dumpInfo(oi.joystick.getX()*axes.motor_inversion[0], oi.joystick.getY()*axes.motor_inversion[1], currentRotationRate*axes.motor_inversion[2], self.ahrs.getAngle())
         subsystems.drivetrain.driveCartesian(
                 inputNoise(oi.joystick.getX()*axes.motor_inversion[0]),
                 inputNoise(oi.joystick.getY()*axes.motor_inversion[1]),
-                currentRotationRate*axes.motor_inversion[2],self.ahrs.getAngle())
+                currentRotationRate*axes.motor_inversion[2],0)
         #self.ahrs.getAngle()
     def pidWrite(self, output):
         """This function is invoked periodically by the PID Controller,
