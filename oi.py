@@ -5,8 +5,6 @@ from commands.crossbow import Crossbow, PullIntake
 from commands.invertmotors import InvertMotors
 from commands.turnrdrive import TurnDrive
 from commands.intake import Intake
-from commands.outtake import Outtake
-
 
 joystick = None
 
@@ -14,8 +12,10 @@ joystick = None
 def init():
     global joystick
     joystick = Joystick(0)
-    crossbow = JoystickButton(joystick, 7)
-    crossbow_in = JoystickButton(joystick, 8)
+
+    crossbow = JoystickButton(joystick, 9)
+    crossbow_in = JoystickButton(joystick, 10)
+
     solenoid_intake = JoystickButton(joystick, 1)
 
     invert_motors = JoystickButton(joystick, 4)
@@ -30,7 +30,3 @@ def init():
 
     intake = JoystickButton(joystick, 5)
     intake.toggleWhenPressed(Intake())
-
-    outtake = JoystickButton(joystick, 6)
-    outtake.toggleWhenPressed(Outtake())
-    

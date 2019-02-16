@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "Users/s893759/brew/bin/python3",
+    "python.pythonPath": "C:\\Users\\Logan ONeal\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe",
     "python.linting.pep8Enabled": false,
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true

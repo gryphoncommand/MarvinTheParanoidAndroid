@@ -12,15 +12,19 @@ class Intake(Command):
     '''
     def __init__(self):
         super().__init__('Intake')
-        self.control = True
+        self.toggle = False
 
     def initialize(self):
         pass
 
     def execute(self):
-        if self.control:
-            subsystems.mechanisms.set_intake(.5)
+        self.toggle = subsystems.mechanisms.get_stopper()
+        print(self.toggle)
 
+        subsystems.mechanisms.set_intake(0.75)
+
+    def isFinished(self):
+        return self.toggle
 
     def end(self):
-        subsystems.mechanisms.set_intake(0)
+        subsystems.mechanisms.set_intake (0)

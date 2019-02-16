@@ -11,8 +11,10 @@ class Mechanisms(Subsystem):
 
     def __init__(self):
 
+        #stopper trigger (on instake)
         self.stopper = DigitalInput(0)
         self.intake_toggle = False
+
         # Verify motor ports when placed on frame
         self.intake = Spark(1)
         self.intake_solenoid = DoubleSolenoid(2, 3)
@@ -39,7 +41,11 @@ class Mechanisms(Subsystem):
         self.gear_shift.set(_setting)
 
     def get_stopper(self):
-        return self.stopper.get()
+        stopper = self.stopper.get()
+        if stopper == False:
+            return True
+        elif stopper:
+            return False
 
     def initDefaultCommand(self):
         self.setDefaultCommand(FollowJoystick())

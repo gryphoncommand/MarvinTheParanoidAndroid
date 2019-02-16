@@ -4,7 +4,7 @@ from commandbased import CommandBasedRobot
 import subsystems
 import oi
 import argparse
-
+from commands.shooter import Shooter
 from commands.followjoystick import FollowJoystick
 from commands.intake import Intake
 # parser = argparse.ArgumentParser()
@@ -23,6 +23,7 @@ class Penumbra(CommandBasedRobot):
         oi.init()
         self.teleopProgram = wpilib.command.CommandGroup()
         self.teleopProgram.addParallel(FollowJoystick())
+        self.teleopProgram.addParallel(Shooter())
 
     def teleopInit(self):
         self.teleopProgram.start()
