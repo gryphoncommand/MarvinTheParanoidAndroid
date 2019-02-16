@@ -23,7 +23,6 @@ class Penumbra(CommandBasedRobot):
         oi.init()
         self.teleopProgram = wpilib.command.CommandGroup()
         self.teleopProgram.addParallel(FollowJoystick())
-        self.teleopProgram.addParallel(Intake())
 
     def teleopInit(self):
         self.teleopProgram.start()

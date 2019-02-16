@@ -4,12 +4,15 @@ from wpilib import Spark
 
 from wpilib.drive import MecanumDrive
 from wpilib.doublesolenoid import DoubleSolenoid
+from wpilib.digitalinput import DigitalInput
 
 
 class Mechanisms(Subsystem):
 
     def __init__(self):
 
+        self.stopper = DigitalInput(0)
+        self.intake_toggle = False
         # Verify motor ports when placed on frame
         self.intake = Spark(1)
         self.intake_solenoid = DoubleSolenoid(2, 3)
@@ -34,6 +37,9 @@ class Mechanisms(Subsystem):
 
     def shift_gears(self, _setting):
         self.gear_shift.set(_setting)
+
+    def get_stopper(self):
+        return self.stopper.get()
 
     def initDefaultCommand(self):
         self.setDefaultCommand(FollowJoystick())

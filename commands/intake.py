@@ -12,17 +12,15 @@ class Intake(Command):
     '''
     def __init__(self):
         super().__init__('Intake')
+        self.control = True
 
     def initialize(self):
         pass
 
     def execute(self):
-        if oi.joystick.getRawButton(7):
-            power = 0.5
-        elif oi.joystick.getRawButton(8):
-            power = -0.5
-        else: power = 0.0
-        subsystems.mechanisms.set_intake(power)
+        if self.control:
+            subsystems.mechanisms.set_intake(.5)
+
 
     def end(self):
         subsystems.mechanisms.set_intake(0)

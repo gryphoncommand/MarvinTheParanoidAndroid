@@ -4,6 +4,9 @@ from wpilib.buttons.joystickbutton import JoystickButton
 from commands.crossbow import Crossbow, PullIntake
 from commands.invertmotors import InvertMotors
 from commands.turnrdrive import TurnDrive
+from commands.intake import Intake
+from commands.outtake import Outtake
+
 
 joystick = None
 
@@ -11,8 +14,8 @@ joystick = None
 def init():
     global joystick
     joystick = Joystick(0)
-    crossbow = JoystickButton(joystick, 5)
-    crossbow_in = JoystickButton(joystick, 6)
+    crossbow = JoystickButton(joystick, 7)
+    crossbow_in = JoystickButton(joystick, 8)
     solenoid_intake = JoystickButton(joystick, 1)
 
     invert_motors = JoystickButton(joystick, 4)
@@ -25,4 +28,9 @@ def init():
     align_hatch = JoystickButton(joystick, 3)
     align_hatch.whenPressed(TurnDrive())
 
-    # 0 is hatch
+    intake = JoystickButton(joystick, 5)
+    intake.toggleWhenPressed(Intake())
+
+    outtake = JoystickButton(joystick, 6)
+    outtake.toggleWhenPressed(Outtake())
+    
