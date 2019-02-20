@@ -6,7 +6,7 @@ import wpilib
 #from hardware.navx import NavX
 #from robotmap import navx_type
 from navx import AHRS
-from robotmap import axes
+from robotmap import axes, config
 
 def inputNoise(input):
     if(abs(input) < 0.03):
@@ -66,6 +66,14 @@ class FollowJoystick(Command):
         self.tm = wpilib.Timer()
         self.tm.start()
         self.stick = oi.joystick
+        self.xInv = 1
+        self.yInv = 1
+        self.zInv = -1
+
+        if config.centric == True:
+            self.angle = self.ahrs.getAngle()
+        else:
+            self.angle = 0
 
 
     def initalize(self):
@@ -80,11 +88,21 @@ class FollowJoystick(Command):
     def execute(self):
         # print("NavX Gyro", self.ahrs.getYaw(), self.ahrs.getAngle())
         rotateToAngle = False
-
+        angle = self.stick.getPOV(0)
+        xSpeed = 0
+        ySpeed = 0
+        if angle == 90:
+            xSpeed = .3
+        elif angle == 270:
+            xSpeed = -.3
+        
+        if angle == 180:
+            ySpeed = .3
+        elif angle == 0:
+            ySpeed = -.3
 
         if self.stick.getRawButton(2):
             self.ahrs.reset()
-            print('joy 2')
 
         if rotateToAngle:
             self.turnController.enable()
@@ -92,14 +110,13 @@ class FollowJoystick(Command):
         else:
             self.turnController.disable()
             currentRotationRate = self.stick.getTwist()
-            
-        #set motors
-        self.dumpInfo(oi.joystick.getX()*axes.motor_inversion[0], oi.joystick.getY()*axes.motor_inversion[1], currentRotationRate*axes.motor_inversion[2], self.ahrs.getAngle())
+
+
+
         subsystems.drivetrain.driveCartesian(
-                inputNoise(oi.joystick.getX()),
-                inputNoise(oi.joystick.getY()),
-                currentRotationRate * -1,0)
-        #self.ahrs.getAngle()
+                inputNoise(oi.joystick.getX() + xSpeed) * self.xInv,
+                inputNoise(oi.joystick.getY() + ySpeed) * self.yInv,
+                currentRotationRate * self.zInv,self.angle)
     def pidWrite(self, output):
         """This function is invoked periodically by the PID Controller,
         based upon navX MXP yaw angle input and PID Coefficients.

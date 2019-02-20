@@ -25,6 +25,7 @@ class Penumbra(CommandBasedRobot):
         self.teleopProgram.addParallel(FollowJoystick())
         self.teleopProgram.addParallel(Shooter())
 
+
     def teleopInit(self):
         self.teleopProgram.start()
 

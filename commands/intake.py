@@ -21,7 +21,7 @@ class Intake(Command):
         self.toggle = subsystems.mechanisms.get_stopper()
         print(self.toggle)
 
-        subsystems.mechanisms.set_intake(0.75)
+        subsystems.mechanisms.set_intake(0.5)
 
     def isFinished(self):
         return self.toggle

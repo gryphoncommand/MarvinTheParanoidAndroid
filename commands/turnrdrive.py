@@ -18,6 +18,7 @@ class TurnDrive(Command):
 
 
         def set_motors(pw):
+            '''
             currentRotationRate = self.stick.getTwist()
             rotationRate = pw + currentRotationRate
             print("Pid Write: ", pw)
@@ -26,11 +27,20 @@ class TurnDrive(Command):
                                                  oi.joystick.getY(), 
                                                  rotationRate,
                                                  0)
+            '''
+            currentRate = oi.joystick.getX()
+            changeRate = pw + currentRate
+            print("Pid Write: ", pw)
+            subsystems.drivetrain.driveCartesian(changeRate,
+                                                 oi.joystick.getY(), 
+                                                 self.stick.getTwist(),
+                                                 0)
+
 
         src = PIDHatchSource()
         
-        self.kP = 0.75
-        self.kI = 0.00
+        self.kP = 0.9
+        self.kI = 0.05
         self.kD = 0.00
         self.kF = 0.00
 
@@ -39,7 +49,7 @@ class TurnDrive(Command):
         self.PID.setInputRange(0.0, 1.0)
         self.PID.setOutputRange(-0.7, 0.7)
         self.PID.setContinuous(True)
-        self.PID.setAbsoluteTolerance(0.02)
+        self.PID.setAbsoluteTolerance(0.005)
 
         self.PID.setPIDSourceType(PIDController.PIDSourceType.kDisplacement)
 

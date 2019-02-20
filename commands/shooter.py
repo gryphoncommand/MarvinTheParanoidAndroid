@@ -16,7 +16,7 @@ class Shooter(Command):
         pass
 
     def execute(self):
-        if self.stick.getRawButton(6):
+        if self.stick.getRawButton(7):
             power = 1
         elif self.stick.getRawButton(8):
             power = -1.0

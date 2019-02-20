@@ -28,3 +28,6 @@ class NavXType(Enum):
     SPI = 2
 
 navx_type = NavXType.SPI
+
+config = InfoPasser()
+config.centric = False

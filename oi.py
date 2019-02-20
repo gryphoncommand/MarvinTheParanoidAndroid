@@ -13,12 +13,12 @@ def init():
     global joystick
     joystick = Joystick(0)
 
-    crossbow = JoystickButton(joystick, 9)
-    crossbow_in = JoystickButton(joystick, 10)
+    crossbow = JoystickButton(joystick, 5)
+    crossbow_in = JoystickButton(joystick, 6)
 
     solenoid_intake = JoystickButton(joystick, 1)
 
-    invert_motors = JoystickButton(joystick, 4)
+    invert_motors = JoystickButton(joystick, 2)
     invert_motors.whenPressed(InvertMotors())
 
     crossbow.whenPressed(Crossbow(0.75, 0.5))
@@ -28,5 +28,5 @@ def init():
     align_hatch = JoystickButton(joystick, 3)
     align_hatch.whenPressed(TurnDrive())
 
-    intake = JoystickButton(joystick, 5)
+    intake = JoystickButton(joystick, 4)
     intake.toggleWhenPressed(Intake())
