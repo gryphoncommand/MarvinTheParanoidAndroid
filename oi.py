@@ -25,7 +25,7 @@ def init():
     crossbow_in.whenPressed(Crossbow(-0.75, 0.5))
     solenoid_intake.whenPressed(PullIntake())
 
-    align_hatch = JoystickButton(joystick, 3)
+    align_hatch = JoystickButton(joystick, 12)
     align_hatch.whenPressed(TurnDrive())
 
     intake = JoystickButton(joystick, 4)
