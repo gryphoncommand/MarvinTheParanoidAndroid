@@ -1,5 +1,5 @@
-Main Module: robot.py
-=====================
+Main Module: *robot.py*
+=======================
 
 This file is the nexus of our project. It is interconnected to everything
 in the project and serves as our main executable file.
@@ -26,7 +26,7 @@ Params Options:
 
 ---------------------
 
-File Info:
+File Info
 ----------
 .. automodule:: robot
     :members:
