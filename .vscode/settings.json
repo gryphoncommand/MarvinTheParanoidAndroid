@@ -1,6 +1,7 @@
 {
-    "python.pythonPath": "C:\\Users\\Logan ONeal\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe",
-    "python.linting.pep8Enabled": false,
-    "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
+    "python.pythonPath": "/Users/s848387/brew/Cellar/python/3.7.2_1/bin/python3",
+    "python.linting.pep8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": true,
+    "restructuredtext.confPath": "${workspaceFolder}/docs/source"
 }
