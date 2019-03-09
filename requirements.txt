@@ -3,3 +3,4 @@ pynetworktables==2019.0.0
 pyfrc==2019.0.7
 robotpy_ctre==2019.0.1
 robotpy_wpilib_utilities==2019.0.0
+robotpy-navx==2019.0.1
