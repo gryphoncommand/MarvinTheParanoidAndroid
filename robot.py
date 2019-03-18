@@ -7,15 +7,9 @@ import argparse
 from commands.shooter import Shooter
 from commands.followjoystick import FollowJoystick
 from commands.intake import Intake
-# parser = argparse.ArgumentParser()
-# parser.add_argument("--enabletank",
-#                     help=
-#                       "Pass this to override mecanum and enable tankdrive",
-#                     action="store_true")
-# args = parser.parse_args()
 
 
-class Penumbra(CommandBasedRobot):
+class Marvin(CommandBasedRobot):
 
     """
     This class runs a Command Based architecture, which separates the project
@@ -46,6 +40,8 @@ class Penumbra(CommandBasedRobot):
     def teleopInit(self):
         self.teleopProgram.start()
 
+    def autonomousPeriodic(self):
+        self.teleopProgram.start()
 
 if __name__ == "__main__":
-    wpilib.run(Penumbra, physics_enabled=True)
+    wpilib.run(Marvin, physics_enabled=True)
