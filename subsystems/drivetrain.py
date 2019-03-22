@@ -15,8 +15,8 @@ class Drivetrain(Subsystem):
         self.motor_rf = WPI_TalonSRX(3)
         self.motor_rr = WPI_TalonSRX(4)
 
-        self.motor_rr.setInverted(True)
-        self.motor_lr.setInverted(True)
+        #self.motor_rr.setInverted(False)
+        #self.motor_lr.setInverted(False)
 
         self.drive = MecanumDrive(self.motor_lf, self.motor_lr,
                                   self.motor_rf, self.motor_rr)

@@ -7,7 +7,7 @@ import argparse
 from commands.shooter import Shooter
 from commands.followjoystick import FollowJoystick
 from commands.intake import Intake
-
+from commands.crossbow import Crossbow
 
 class Marvin(CommandBasedRobot):
 
@@ -37,11 +37,19 @@ class Marvin(CommandBasedRobot):
         self.teleopProgram.addParallel(FollowJoystick())
         self.teleopProgram.addParallel(Shooter())
 
+        self.autoProgram = wpilib.command.CommandGroup()
+        self.autoProgram.addParallel(FollowJoystick())
+        self.autoProgram.addParallel(Shooter())
+        self.autoProgram.addSequential(Crossbow(.55,0.5))
+        self.autoProgram.addSequential(Crossbow(-.75,1))
+
     def teleopInit(self):
         self.teleopProgram.start()
 
-    def autonomousPeriodic(self):
-        self.teleopProgram.start()
+    def autonomousInit(self):
+        self.autoProgram.start()
+ 
+
 
 if __name__ == "__main__":
     wpilib.run(Marvin, physics_enabled=True)

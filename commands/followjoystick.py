@@ -103,6 +103,10 @@ class FollowJoystick(Command):
 
         if self.stick.getRawButton(2):
             self.ahrs.reset()
+        if self.stick.getRawButton(3):
+            self.xInv = self.xInv * -1
+            self.yInv = self.yInv * -1
+            self.zInv = self.zInv * -1
 
         if rotateToAngle:
             self.turnController.enable()

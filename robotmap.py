@@ -8,10 +8,10 @@ class InfoPasser:
 
 axes = InfoPasser()
 
-axes.L_x = 0
+axes.L_x = 2
 axes.L_y = 1
 
-axes.R_x = 2
+axes.R_x = 0
 axes.R_y = 5
 #pip3 install --upgrade robotpy-navx
 

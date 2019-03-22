@@ -17,9 +17,9 @@ class Shooter(Command):
 
     def execute(self):
         if self.stick.getRawButton(7):
-            power = 1
+            power = 0.75
         elif self.stick.getRawButton(8):
-            power = -1.0
+            power = -1
         else: 
             power = 0.0
         subsystems.mechanisms.set_intake(power)

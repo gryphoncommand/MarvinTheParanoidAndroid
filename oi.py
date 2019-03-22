@@ -14,15 +14,16 @@ def init():
     joystick = Joystick(0)
 
     crossbow = JoystickButton(joystick, 5)
-    crossbow_in = JoystickButton(joystick, 6)
+    crossbow_in_hold = JoystickButton(joystick, 6)
 
     solenoid_intake = JoystickButton(joystick, 1)
 
     invert_motors = JoystickButton(joystick, 2)
     invert_motors.whenPressed(InvertMotors())
 
-    crossbow.whenPressed(Crossbow(0.75, 0.5))
-    crossbow_in.whenPressed(Crossbow(-0.75, 0.5))
+    crossbow.whenPressed(Crossbow(.75, 1))
+    crossbow_in_hold.whenPressed(Crossbow(-0.35, 3.5))
+
     solenoid_intake.whenPressed(PullIntake())
 
     align_hatch = JoystickButton(joystick, 12)

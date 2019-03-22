@@ -31,9 +31,9 @@ class TurnDrive(Command):
             currentRate = oi.joystick.getX()
             changeRate = pw + currentRate
             print("Pid Write: ", pw)
-            subsystems.drivetrain.driveCartesian(changeRate,
+            subsystems.drivetrain.driveCartesian(oi.joystick.getX(),
                                                  oi.joystick.getY(), 
-                                                 self.stick.getTwist(),
+                                                 changeRate,
                                                  0)
 
 
