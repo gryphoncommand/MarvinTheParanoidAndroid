@@ -1,6 +1,7 @@
 import wpilib
 from wpilib.command import Command
 from robotmap import axes
+#from commands.followjoystick import FollowJoystick
 
 class InvertMotors(Command):
     def __init__(self):
@@ -8,5 +9,6 @@ class InvertMotors(Command):
         super().__init__('InvertMotors')
 
     def execute(self):
-        for item in axes.motor_inversion:
-            item = item * -1
+        FollowJoystick.xInv = FollowJoystick.xInv * -1
+        FollowJoystick.yInv = FollowJoystick.yInv * -1
+        FollowJoystick.zInv = FollowJoystick.zInv * -1

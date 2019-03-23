@@ -13,13 +13,7 @@ def inputNoise(input):
         input = 0
     return input
 
-class InvertMotors(Command):
-    def __init__(self):
-        super().__init__('InvertMotors')
-
-    def execute(self):
-        for item in axes.motor_inversion:
-            item = item * -1
+            
 
 class FollowJoystick(Command):
     '''
@@ -66,9 +60,9 @@ class FollowJoystick(Command):
         self.tm = wpilib.Timer()
         self.tm.start()
         self.stick = oi.joystick
-        self.xInv = 1
-        self.yInv = 1
-        self.zInv = -1
+        self.xInv = -1
+        self.yInv = -1
+        self.zInv = 1
 
         if config.centric == True:
             self.angle = self.ahrs.getAngle()
@@ -103,10 +97,7 @@ class FollowJoystick(Command):
 
         if self.stick.getRawButton(2):
             self.ahrs.reset()
-        if self.stick.getRawButton(3):
-            self.xInv = self.xInv * -1
-            self.yInv = self.yInv * -1
-            self.zInv = self.zInv * -1
+        
 
         if rotateToAngle:
             self.turnController.enable()
