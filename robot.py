@@ -8,6 +8,7 @@ from commands.shooter import Shooter
 from commands.followjoystick import FollowJoystick
 from commands.intake import Intake
 from commands.crossbow import Crossbow
+from commands.autojoystick import AutoJoystick
 
 class Marvin(CommandBasedRobot):
 
@@ -38,7 +39,7 @@ class Marvin(CommandBasedRobot):
         self.teleopProgram.addParallel(Shooter())
 
         self.autoProgram = wpilib.command.CommandGroup()
-        self.autoProgram.addParallel(FollowJoystick())
+        self.autoProgram.addParallel(AutoJoystick())
         self.autoProgram.addParallel(Shooter())
         self.autoProgram.addSequential(Crossbow(.55,0.5))
         self.autoProgram.addSequential(Crossbow(-.75,1))

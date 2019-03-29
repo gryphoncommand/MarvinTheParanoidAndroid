@@ -8,6 +8,7 @@ import wpilib
 from navx import AHRS
 from robotmap import axes, config
 
+
 def inputNoise(input):
     if(abs(input) < 0.03):
         input = 0
@@ -68,6 +69,8 @@ class FollowJoystick(Command):
             self.angle = self.ahrs.getAngle()
         else:
             self.angle = 0
+        self.toggle = False
+
 
 
     def initalize(self):
@@ -81,6 +84,8 @@ class FollowJoystick(Command):
 
     def execute(self):
         # print("NavX Gyro", self.ahrs.getYaw(), self.ahrs.getAngle())
+        self.toggle = subsystems.mechanisms.get_stopper()
+
         rotateToAngle = False
         angle = self.stick.getPOV(0)
         xSpeed = 0
@@ -112,6 +117,8 @@ class FollowJoystick(Command):
                 inputNoise(oi.joystick.getX() + xSpeed) * self.xInv,
                 inputNoise(oi.joystick.getY() + ySpeed) * self.yInv,
                 currentRotationRate * self.zInv,self.angle)
+
+        
     def pidWrite(self, output):
         """This function is invoked periodically by the PID Controller,
         based upon navX MXP yaw angle input and PID Coefficients.
