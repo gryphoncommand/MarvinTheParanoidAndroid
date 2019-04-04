@@ -3,10 +3,9 @@ import subsystems
 import oi
 import math
 import wpilib
-#from hardware.navx import NavX
-#from robotmap import navx_type
 from navx import AHRS
 from robotmap import axes, config
+import time
 
 
 def inputNoise(input):
@@ -25,13 +24,8 @@ class FollowJoystick(Command):
     def __init__(self):
         super().__init__('Follow Joystick')
         self.stime = None
-
-        # Communicate w/navX MXP via the MXP SPI Bus.
-        # - Alternatively, use the i2c bus.
-        # See http://navx-mxp.kauailabs.com/guidance/selecting-an-interface/ for details
-        #
         
-        self.kP = 0.75
+        self.kP = 0.005
         self.kI = 0.00
         self.kD = 0.00
         self.kF = 0.00
@@ -69,8 +63,6 @@ class FollowJoystick(Command):
             self.angle = self.ahrs.getAngle()
         else:
             self.angle = 0
-        self.toggle = False
-
 
 
     def initalize(self):
@@ -83,26 +75,14 @@ class FollowJoystick(Command):
         subsystems.smartdashboard.putNumber("angle", angle)
 
     def execute(self):
-        # print("NavX Gyro", self.ahrs.getYaw(), self.ahrs.getAngle())
-        self.toggle = subsystems.mechanisms.get_stopper()
-
+        print("NavX Gyro Yaw, Angle", self.ahrs.getYaw(), self.ahrs.getAngle())
         rotateToAngle = False
-        angle = self.stick.getPOV(0)
-        xSpeed = 0
-        ySpeed = 0
-        if angle == 90:
-            xSpeed = .3
-        elif angle == 270:
-            xSpeed = -.3
-        
-        if angle == 180:
-            ySpeed = .3
-        elif angle == 0:
-            ySpeed = -.3
 
+        if self.stick.getRawButton(3):
+            self.turnController.setSetpoint(90.0)
+            rotateToAngle = True
         if self.stick.getRawButton(2):
             self.ahrs.reset()
-        
 
         if rotateToAngle:
             self.turnController.enable()
@@ -114,9 +94,11 @@ class FollowJoystick(Command):
 
 
         subsystems.drivetrain.driveCartesian(
-                inputNoise(oi.joystick.getX() + xSpeed) * self.xInv,
-                inputNoise(oi.joystick.getY() + ySpeed) * self.yInv,
+                inputNoise(oi.joystick.getX()) * self.xInv,
+                inputNoise(oi.joystick.getY()) * self.yInv,
                 currentRotationRate * self.zInv,self.angle)
+
+        #wpilib.SmartDashboard.putData("Centric Angle", self.angle)
 
         
     def pidWrite(self, output):

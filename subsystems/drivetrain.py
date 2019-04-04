@@ -4,6 +4,8 @@ from ctre import WPI_TalonSRX
 from commands.followjoystick import FollowJoystick
 from wpilib.drive import MecanumDrive
 from robotmap import axes
+import hal
+
 
 class Drivetrain(Subsystem):
 

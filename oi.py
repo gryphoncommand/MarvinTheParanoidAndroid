@@ -23,7 +23,7 @@ def init():
     #invert_motors = JoystickButton(joystick, 3)
     #invert_motors.whenPressed(InvertMotors())
 
-    crossbow.whenPressed(Crossbow(.9, 1))
+    crossbow.whenPressed(Crossbow(.8, 1))
     crossbow_in_hold.whenPressed(Crossbow(-0.6, 1.75))
 
     solenoid_intake.whenPressed(PullIntake())

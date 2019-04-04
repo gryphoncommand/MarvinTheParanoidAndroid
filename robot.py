@@ -9,6 +9,7 @@ from commands.followjoystick import FollowJoystick
 from commands.intake import Intake
 from commands.crossbow import Crossbow
 from commands.autojoystick import AutoJoystick
+from commands.pidmecanumdrivejoystick import PIDMecanumDriveJoystick
 
 class Marvin(CommandBasedRobot):
 

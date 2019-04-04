@@ -22,12 +22,11 @@ class Intake(Command):
     def execute(self):
         self.toggle = subsystems.mechanisms.get_stopper()
 
-        subsystems.mechanisms.set_intake(0.5)
+        subsystems.mechanisms.set_intake(0.6)
 
     def isFinished(self):
-        #if self.toggle:
-        #    print(self.toggle)
-        #    subsystems.mechanisms.pull_intake(wpilib.DoubleSolenoid.Value.kReverse)
+        if self.toggle:
+            wpilib.Timer.delay(.1)
         return self.toggle
 
     def end(self):
