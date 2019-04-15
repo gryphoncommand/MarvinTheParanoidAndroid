@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/lnstempunks/MarvinTheParanoidAndroid.svg?branch=master)](https://travis-ci.org/lnstempunks/MarvinTheParanoidAndroid)
 [![Documentation Status](https://readthedocs.org/projects/marvintheparanoidandroid/badge/?version=latest)](https://marvintheparanoidandroid.readthedocs.io/en/latest/?badge=latest)
 
-Our code for the 2019 FIRST Robotics Competition Season. This goes with our 2019 robot, QBit.
+Our code for the 2019 FIRST Robotics Competition Season. This goes with our 2019 robot, Rosetta.
 
 ![Banner](penumbra.png)
 
