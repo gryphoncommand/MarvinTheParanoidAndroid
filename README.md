@@ -1,3 +1,5 @@
+# MarvinTheParanoidAndroid
+
 [![Build Status](https://travis-ci.org/lnstempunks/MarvinTheParanoidAndroid.svg?branch=master)](https://travis-ci.org/lnstempunks/MarvinTheParanoidAndroid)
 [![Documentation Status](https://readthedocs.org/projects/marvintheparanoidandroid/badge/?version=latest)](https://marvintheparanoidandroid.readthedocs.io/en/latest/?badge=latest)
 
@@ -5,32 +7,29 @@ Our code for the 2019 FIRST Robotics Competition Season. This goes with our 2019
 
 
 
-
-# Installation
-
-## Clone the repo: 
+## Installation: 
 
 ```git clone https://github.com/lnstempunks/marvintheparanoidandroid```
 
-## Install the needed dependencies with PIP
+```pip3 install pipenv```
+```pipenv install```
 
-```pip3 install -r travis.txt```
+## Style
 
+Run ```black .``` prior to committing any changes, as style is enforced by CI.
+See [PEP 8](https://www.python.org/dev/peps/pep-0008/) and [PEP 257](https://www.python.org/dev/peps/pep-0257/) for style guidance.
 
-# Running
+## Checks
 
-## Run PyGame simulator
+Code should pass ```pyflakes .``` prior to commit, as it is also enforced by CI.
+
+## Running
+
+### Run simulator
 ```python3 robot.py sim```
-
-## Run tests
-
-```python3 robot.py test```
-
-## Deploy to robot
+### Run tests
+```python3 robot.py coverage test```
+### Deploy to robot
 ```python3 robot.py deploy```
 
 To edit any changes in IPs or radios, edit or delete the ```.deploy_cfg``` file.
-
-
-
-
