@@ -106,6 +106,8 @@ venv.bak/
 # Visual Studio stuff
 .vs/
 .vscode/
+*.sln
+*.pyproj
 
 # OS-specific
 .DS_Store
