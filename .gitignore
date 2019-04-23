@@ -103,9 +103,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# Pipenv
-Pipfile.lock
-
 # Vim 
 .sw[a-p]
 .*.sw[a-p]
