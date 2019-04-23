@@ -9,6 +9,6 @@ install:
   - pipenv install
 # command to run tests
 script:
-  - python robot.py coverage test
+  - python robot.py test
   - pyflakes .
   - black --check --diff .
