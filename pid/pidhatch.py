@@ -2,6 +2,7 @@ from wpilib.analogpotentiometer import AnalogPotentiometer
 from wpilib.interfaces.pidsource import PIDSource
 import subsystems
 
+
 class PIDHatchSource(PIDSource):
     def __init__(self):
         self.thingie = 1
@@ -18,5 +19,3 @@ class PIDHatchSource(PIDSource):
 
     def getPIDSourceType(self):
         return PIDSource.PIDSourceType.kDisplacement
-
-    

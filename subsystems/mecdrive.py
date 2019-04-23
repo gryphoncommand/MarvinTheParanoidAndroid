@@ -8,7 +8,6 @@ from robotmap import axes
 from wpilib.encoder import Encoder
 
 
-
 from robotmap import motors, encoders
 
 
@@ -28,10 +27,10 @@ class MecDrive(Subsystem):
 
     def set_rf(self, power):
         self.motor_rf.set(power)
-    
+
     def set_rr(self, power):
         self.motor_rr.set(power)
-    
+
     def stop(self):
         self.set(0, 0, 0, 0)
 
@@ -44,5 +43,3 @@ class MecDrive(Subsystem):
             self.set_lf(rf_power)
         if rr_power is not None:
             self.set_lf(rr_power)
-
-    

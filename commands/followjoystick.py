@@ -9,31 +9,27 @@ import time
 
 
 def inputNoise(input):
-    if(abs(input) < 0.03):
+    if abs(input) < 0.03:
         input = 0
     return input
 
-            
 
 class FollowJoystick(Command):
-    '''
+    """
     This command will read the joystick's y axis and use that value to control
     the speed of the SingleMotor subsystem.
-    '''
-    
+    """
+
     def __init__(self):
-        super().__init__('Follow Joystick')
+        super().__init__("Follow Joystick")
         self.stime = None
-        
+
         self.kP = 0.005
         self.kI = 0.00
         self.kD = 0.00
         self.kF = 0.00
 
-
-
         self.ahrs = AHRS.create_spi()
-
 
         self.kToleranceDegrees = 2.0
 
@@ -64,7 +60,6 @@ class FollowJoystick(Command):
         else:
             self.angle = 0
 
-
     def initalize(self):
         self.stime = time.time()
 
@@ -91,16 +86,15 @@ class FollowJoystick(Command):
             self.turnController.disable()
             currentRotationRate = self.stick.getTwist()
 
-
-
         subsystems.drivetrain.driveCartesian(
-                inputNoise(oi.joystick.getX()) * self.xInv,
-                inputNoise(oi.joystick.getY()) * self.yInv,
-                currentRotationRate * self.zInv,self.angle)
+            inputNoise(oi.joystick.getX()) * self.xInv,
+            inputNoise(oi.joystick.getY()) * self.yInv,
+            currentRotationRate * self.zInv,
+            self.angle,
+        )
 
-        #wpilib.SmartDashboard.putData("Centric Angle", self.angle)
+        # wpilib.SmartDashboard.putData("Centric Angle", self.angle)
 
-        
     def pidWrite(self, output):
         """This function is invoked periodically by the PID Controller,
         based upon navX MXP yaw angle input and PID Coefficients.

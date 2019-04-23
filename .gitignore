@@ -103,10 +103,23 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-# Visual Studio stuff
+# Vim 
+.sw[a-p]
+.*.sw[a-p]
+*~
+
+# JetBrains
+.idea/
+*.iws
+
+# Visual Studio
 .vs/
 .vscode/
+*.sln
+*.pyproj
 
 # OS-specific
 .DS_Store
+.AppleDouble
+.LSOverride
 desktop.ini

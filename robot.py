@@ -11,6 +11,7 @@ from commands.crossbow import Crossbow
 from commands.autojoystick import AutoJoystick
 from commands.pidmecanumdrivejoystick import PIDMecanumDriveJoystick
 
+
 class Marvin(CommandBasedRobot):
 
     """
@@ -42,15 +43,14 @@ class Marvin(CommandBasedRobot):
         self.autoProgram = wpilib.command.CommandGroup()
         self.autoProgram.addParallel(AutoJoystick())
         self.autoProgram.addParallel(Shooter())
-        self.autoProgram.addSequential(Crossbow(.55,0.5))
-        self.autoProgram.addSequential(Crossbow(-.75,1))
+        self.autoProgram.addSequential(Crossbow(0.55, 0.5))
+        self.autoProgram.addSequential(Crossbow(-0.75, 1))
 
     def teleopInit(self):
         self.teleopProgram.start()
 
     def autonomousInit(self):
         self.autoProgram.start()
- 
 
 
 if __name__ == "__main__":

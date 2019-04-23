@@ -3,43 +3,40 @@ import subsystems
 import oi
 import math
 import wpilib
-#from hardware.navx import NavX
-#from robotmap import navx_type
+
+# from hardware.navx import NavX
+# from robotmap import navx_type
 from navx import AHRS
 from robotmap import axes, config
 
 
 def inputNoise(input):
-    if(abs(input) < 0.03):
+    if abs(input) < 0.03:
         input = 0
     return input
 
-            
 
 class AutoJoystick(Command):
-    '''
+    """
     This command will read the joystick's y axis and use that value to control
     the speed of the SingleMotor subsystem.
-    '''
-    
+    """
+
     def __init__(self):
-        super().__init__('Follow Joystick')
+        super().__init__("Follow Joystick")
         self.stime = None
 
         # Communicate w/navX MXP via the MXP SPI Bus.
         # - Alternatively, use the i2c bus.
         # See http://navx-mxp.kauailabs.com/guidance/selecting-an-interface/ for details
         #
-        
+
         self.kP = 0.75
         self.kI = 0.00
         self.kD = 0.00
         self.kF = 0.00
 
-
-
         self.ahrs = AHRS.create_spi()
-
 
         self.kToleranceDegrees = 2.0
 
@@ -71,8 +68,6 @@ class AutoJoystick(Command):
             self.angle = 0
         self.toggle = False
 
-
-
     def initalize(self):
         self.stime = time.time()
 
@@ -91,18 +86,17 @@ class AutoJoystick(Command):
         xSpeed = 0
         ySpeed = 0
         if angle == 90:
-            xSpeed = .3
+            xSpeed = 0.3
         elif angle == 270:
-            xSpeed = -.3
-        
+            xSpeed = -0.3
+
         if angle == 180:
-            ySpeed = .3
+            ySpeed = 0.3
         elif angle == 0:
-            ySpeed = -.3
+            ySpeed = -0.3
 
         if self.stick.getRawButton(2):
             self.ahrs.reset()
-        
 
         if rotateToAngle:
             self.turnController.enable()
@@ -111,14 +105,13 @@ class AutoJoystick(Command):
             self.turnController.disable()
             currentRotationRate = self.stick.getTwist()
 
-
-
         subsystems.drivetrain.driveCartesian(
-                inputNoise(oi.joystick.getX() + xSpeed) * self.xInv,
-                inputNoise(oi.joystick.getY() + ySpeed) * self.yInv,
-                (currentRotationRate * self.zInv)/2,self.angle)
+            inputNoise(oi.joystick.getX() + xSpeed) * self.xInv,
+            inputNoise(oi.joystick.getY() + ySpeed) * self.yInv,
+            (currentRotationRate * self.zInv) / 2,
+            self.angle,
+        )
 
-        
     def pidWrite(self, output):
         """This function is invoked periodically by the PID Controller,
         based upon navX MXP yaw angle input and PID Coefficients.

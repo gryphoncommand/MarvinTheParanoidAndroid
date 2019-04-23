@@ -24,14 +24,15 @@ length = 5
 #     def isFinished(self):
 #         return self.isDone
 
+
 class PullIntake(Command):
     def __init__(self):
-        super().__init__('PullIntake')
+        super().__init__("PullIntake")
         self.default = False
         subsystems.mechanisms.pull_intake(wpilib.DoubleSolenoid.Value.kOff)
 
     def execute(self):
-        print('In Crossbow::execute()')
+        print("In Crossbow::execute()")
         print(self.default)
         if self.default:
             subsystems.mechanisms.pull_intake(wpilib.DoubleSolenoid.Value.kForward)
@@ -39,18 +40,19 @@ class PullIntake(Command):
             subsystems.mechanisms.pull_intake(wpilib.DoubleSolenoid.Value.kReverse)
         self.default = not self.default
         self.isDone = True
-    
+
     def isFinished(self):
         return self.isDone
 
 
 class Crossbow(Command):
-    '''
+    """
     This command sets the motor for a certain length.
 
-    '''
+    """
+
     def __init__(self, speed, _len):
-        super().__init__('Crossbow')
+        super().__init__("Crossbow")
         self.stime = None
         self.speed = speed
         self.tlen = _len
@@ -63,14 +65,13 @@ class Crossbow(Command):
         #     subsystems.mechanisms.set_crossbow(-1 * self.speed)
         # else:
         subsystems.mechanisms.set_crossbow(self.speed)
-        self.isDone = (time.time() - self.stime > self.tlen)
+        self.isDone = time.time() - self.stime > self.tlen
 
     def end(self):
         subsystems.mechanisms.set_crossbow(0)
 
     def isFinished(self):
-        return (self.stime is not None and
-                time.time() - self.stime > self.tlen)
+        return self.stime is not None and time.time() - self.stime > self.tlen
 
     def interrupted(self):
         self.end()
