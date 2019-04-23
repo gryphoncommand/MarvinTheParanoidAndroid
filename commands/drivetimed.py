@@ -7,9 +7,8 @@ import oi
 
 
 class DriveTimed(Command):
-
     def __init__(self, ySpeed, xSpeed, zRotation, gyroAngle, _len):
-        super().__init__('DriveTimed')
+        super().__init__("DriveTimed")
         self.ySpeed, self.xSpeed, self.zRotation = ySpeed, xSpeed, zRotation
         self.gyroAngle, self.len = gyroAngle, _len
 
@@ -19,8 +18,9 @@ class DriveTimed(Command):
         self.stime = time.time()
 
     def execute(self):
-        subsystems.drivetrain.set(self.ySpeed, self.xSpeed,
-                                  self.zRotation, self.gyroAngle)
+        subsystems.drivetrain.set(
+            self.ySpeed, self.xSpeed, self.zRotation, self.gyroAngle
+        )
 
     def end(self):
         subsystems.drivetrain.set(0, 0, 0, 0)

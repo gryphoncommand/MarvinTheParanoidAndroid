@@ -2,6 +2,7 @@ from wpilib.interfaces.pidsource import PIDSource
 from wpilib.interfaces.pidoutput import PIDOutput
 from hardware.encoder import Encoder
 
+
 class PIDMotorSource(PIDSource):
     def __init__(self, _encoder):
 
@@ -16,4 +17,3 @@ class PIDMotorSource(PIDSource):
 
     def getPIDSourceType(self):
         return self.sourceType
-

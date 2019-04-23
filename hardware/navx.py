@@ -8,8 +8,8 @@ import robotmap
 
 from navx import AHRS
 
-class NavX:
 
+class NavX:
     def __init__(self, navx_type):
         self.prev_x_accel = 0
         self.prev_y_accel = 0
@@ -18,8 +18,7 @@ class NavX:
         elif navx_type is robotmap.NavXType.SPI:
             self.navx = AHRS.create_spi()
         else:
-            print ("warning navx instaniated with unknown navx_type")
-
+            print("warning navx instaniated with unknown navx_type")
 
     def getDisplacement(self):
         """
@@ -27,26 +26,26 @@ class NavX:
         if the navx doesn't support displacement, it will return a rough estimation, and won't fail
 
         """
-        return self.navx.getDisplacementX(), self.navx.getDisplacementY(), self.navx.getDisplacementZ()
-
+        return (
+            self.navx.getDisplacementX(),
+            self.navx.getDisplacementY(),
+            self.navx.getDisplacementZ(),
+        )
 
     def getYaw(self):
-        '''
+        """
 
         Gets the yaw, or z-axis for the robot. Helpful for angle calculations.
 
-        '''
+        """
         return self.navx.getYaw()
 
     def getRoll(self):
-        '''
+        """
         Gets the roll (x-axis of the robot)
 
-        '''
+        """
         return self.navx.getRoll()
-
-
-
 
     """
     This is ported code from https://www.pdocs.kauailabs.com/navx-mxp/examples/collision-detection/ to see if RobotPy could implement something like this. 
@@ -78,6 +77,3 @@ class NavX:
                 self.collisionDetected = True
         return self.collisionDetected
     """
-
-    
-

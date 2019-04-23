@@ -5,11 +5,12 @@ import wpilib
 
 
 class Shooter(Command):
-    '''
+    """
     SHoots the ball out the top
-    '''
+    """
+
     def __init__(self):
-        super().__init__('Shooter')
+        super().__init__("Shooter")
         self.stick = oi.joystick
 
     def initialize(self):
@@ -20,7 +21,7 @@ class Shooter(Command):
             power = 0.6
         elif self.stick.getRawButton(8):
             power = -1
-        else: 
+        else:
             power = 0.0
         subsystems.mechanisms.set_intake(power)
 

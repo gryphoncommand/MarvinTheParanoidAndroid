@@ -4,17 +4,18 @@ import subsystems
 import oi
 import wpilib
 from robotmap import axes
-#from commands.crossbow import Crossbow, PullIntake
+
+# from commands.crossbow import Crossbow, PullIntake
 
 
 class Intake(Command):
-    '''
+    """
     This command runs the intake based on the triggers.
-    '''
-    def __init__(self):
-        super().__init__('Intake')
-        self.toggle = False
+    """
 
+    def __init__(self):
+        super().__init__("Intake")
+        self.toggle = False
 
     def initialize(self):
         pass
@@ -26,8 +27,8 @@ class Intake(Command):
 
     def isFinished(self):
         if self.toggle:
-            wpilib.Timer.delay(.1)
+            wpilib.Timer.delay(0.1)
         return self.toggle
 
     def end(self):
-        subsystems.mechanisms.set_intake (0)
+        subsystems.mechanisms.set_intake(0)

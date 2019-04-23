@@ -12,11 +12,12 @@ smartdashboard = None
 
 def init():
 
-    global drivetrain; global mechanisms; global smartdashboard
+    global drivetrain
+    global mechanisms
+    global smartdashboard
 
     drivetrain = Drivetrain()
     mechanisms = Mechanisms()
 
-    NetworkTables.initialize('10.39.66.2')
-    smartdashboard = NetworkTables.getTable('SmartDashboard')
-
+    NetworkTables.initialize("10.39.66.2")
+    smartdashboard = NetworkTables.getTable("SmartDashboard")

@@ -8,10 +8,9 @@ from wpilib.digitalinput import DigitalInput
 
 
 class Mechanisms(Subsystem):
-
     def __init__(self):
 
-        #stopper trigger (on instake)
+        # stopper trigger (on instake)
         self.stopper = DigitalInput(0)
         self.intake_toggle = False
 
