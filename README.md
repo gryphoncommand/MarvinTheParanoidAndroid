@@ -12,6 +12,7 @@ Our code for the 2019 FIRST Robotics Competition Season. This goes with our 2019
 ```git clone https://github.com/lnstempunks/marvintheparanoidandroid```
 
 ```pip3 install pipenv```
+
 ```pipenv install```
 
 ## Style
@@ -21,14 +22,14 @@ See [PEP 8](https://www.python.org/dev/peps/pep-0008/) and [PEP 257](https://www
 
 ## Checks
 
-Code should pass ```pyflakes .``` prior to commit, as it is also enforced by CI.
+Code should pass ```pyflakes .``` prior to commit, as static analysis is also checked by CI.
 
 ## Running
 
 ### Run simulator
 ```python3 robot.py sim```
 ### Run tests
-```python3 robot.py coverage test```
+```python3 robot.py test```
 ### Deploy to robot
 ```python3 robot.py deploy```
 
