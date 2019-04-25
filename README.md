@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/lnstempunks/MarvinTheParanoidAndroid.svg?branch=master)](https://travis-ci.org/lnstempunks/MarvinTheParanoidAndroid)
 [![Documentation Status](https://readthedocs.org/projects/marvintheparanoidandroid/badge/?version=latest)](https://marvintheparanoidandroid.readthedocs.io/en/latest/?badge=latest)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 Our code for the 2019 FIRST Robotics Competition Season. This goes with our 2019 robot, Rosetta.
 
