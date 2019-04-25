@@ -1,0 +1,14 @@
+[pipenv]
+allow_prereleases = true
+
+[packages]
+wpilib = "*"
+pynetworktables = "*"
+pyfrc = "*"
+robotpy_ctre = "*"
+robotpy_wpilib_utilities = "*"
+robotpy-navx = "*"
+header2whatever = "*"
+pyflakes = "*"
+coverage = "*"
+black = "*"
