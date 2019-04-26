@@ -3,7 +3,6 @@ import time
 from wpilib.command import Command
 
 import subsystems
-import oi
 
 
 class DriveTimed(Command):

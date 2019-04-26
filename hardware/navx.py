@@ -22,8 +22,9 @@ class NavX:
 
     def getDisplacement(self):
         """
-        
-        if the navx doesn't support displacement, it will return a rough estimation, and won't fail
+
+        if the navx doesn't support displacement,
+        it will return a rough estimation, and won't fail
 
         """
         return (
@@ -48,7 +49,9 @@ class NavX:
         return self.navx.getRoll()
 
     """
-    This is ported code from https://www.pdocs.kauailabs.com/navx-mxp/examples/collision-detection/ to see if RobotPy could implement something like this. 
+    This is ported code from
+    https://www.pdocs.kauailabs.com/navx-mxp/examples/collision-detection/
+    to see if RobotPy could implement something like this.
 
     Note: This should be a command instead of in here.
 
@@ -73,7 +76,8 @@ class NavX:
             self.current_Jerk_y = self.current_y_accel - self.prev_y_accel
             self.prev_y_accel = self.current_y_accel
 
-            if abs(self.current_Jerk_x) == threshold and abs(self.current_Jerk_y) == threshold:
+            if abs(self.current_Jerk_x) == threshold
+               and abs(self.current_Jerk_y) == threshold:
                 self.collisionDetected = True
         return self.collisionDetected
     """

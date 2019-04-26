@@ -1,5 +1,3 @@
-import wpilib
-
 from .drivetrain import Drivetrain
 from .mechanisms import Mechanisms
 from networktables import NetworkTables

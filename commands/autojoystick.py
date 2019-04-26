@@ -1,13 +1,12 @@
 from wpilib.command import Command
 import subsystems
 import oi
-import math
 import wpilib
-
+import time
 # from hardware.navx import NavX
 # from robotmap import navx_type
 from navx import AHRS
-from robotmap import axes, config
+from robotmap import config
 
 
 def inputNoise(input):
@@ -28,7 +27,8 @@ class AutoJoystick(Command):
 
         # Communicate w/navX MXP via the MXP SPI Bus.
         # - Alternatively, use the i2c bus.
-        # See http://navx-mxp.kauailabs.com/guidance/selecting-an-interface/ for details
+        # See http://navx-mxp.kauailabs.com/guidance/selecting-an-interface/
+        # for details
         #
 
         self.kP = 0.75
@@ -51,9 +51,9 @@ class AutoJoystick(Command):
         self.turnController = turnController
         self.rotateToAngleRate = 0
 
-        # Add the PID Controller to the Test-mode dashboard, allowing manual  */
-        # tuning of the Turn Controller's P, I and D coefficients.            */
-        # Typically, only the P value needs to be modified.                   */
+        # Add the PID Controller to the Test-mode dashboard, allowing manual
+        # tuning of the Turn Controller's P, I and D coefficients.
+        # Typically, only the P value needs to be modified.
         wpilib.Sendable.setName(turnController, "RotateController")
         self.tm = wpilib.Timer()
         self.tm.start()
@@ -62,7 +62,7 @@ class AutoJoystick(Command):
         self.yInv = -1
         self.zInv = 1
 
-        if config.centric == True:
+        if config.centric:
             self.angle = self.ahrs.getAngle()
         else:
             self.angle = 0

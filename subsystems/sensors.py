@@ -1,6 +1,4 @@
-import wpilib
 from wpilib.command.subsystem import Subsystem
-from wpilib import Spark
 
 from robotmap import encoders
 from hardware.encoder import Encoder

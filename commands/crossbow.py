@@ -1,7 +1,6 @@
 from wpilib.command import Command
 
 import subsystems
-import oi
 import time
 import wpilib
 
@@ -35,9 +34,13 @@ class PullIntake(Command):
         print("In Crossbow::execute()")
         print(self.default)
         if self.default:
-            subsystems.mechanisms.pull_intake(wpilib.DoubleSolenoid.Value.kForward)
+            subsystems.mechanisms.pull_intake(
+                wpilib.DoubleSolenoid.Value.kForward
+            )
         else:
-            subsystems.mechanisms.pull_intake(wpilib.DoubleSolenoid.Value.kReverse)
+            subsystems.mechanisms.pull_intake(
+                wpilib.DoubleSolenoid.Value.kReverse
+            )
         self.default = not self.default
         self.isDone = True
 

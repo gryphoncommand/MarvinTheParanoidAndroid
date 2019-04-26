@@ -2,9 +2,9 @@ import wpilib
 from wpilib.command.subsystem import Subsystem
 from wpilib import Spark
 
-from wpilib.drive import MecanumDrive
 from wpilib.doublesolenoid import DoubleSolenoid
 from wpilib.digitalinput import DigitalInput
+from commands.followjoystick import FollowJoystick
 
 
 class Mechanisms(Subsystem):
@@ -41,7 +41,7 @@ class Mechanisms(Subsystem):
 
     def get_stopper(self):
         stopper = self.stopper.get()
-        if stopper == False:
+        if not stopper:
             return True
         elif stopper:
             return False

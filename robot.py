@@ -3,13 +3,10 @@ import wpilib
 from commandbased import CommandBasedRobot
 import subsystems
 import oi
-import argparse
 from commands.shooter import Shooter
 from commands.followjoystick import FollowJoystick
-from commands.intake import Intake
 from commands.crossbow import Crossbow
 from commands.autojoystick import AutoJoystick
-from commands.pidmecanumdrivejoystick import PIDMecanumDriveJoystick
 
 
 class Marvin(CommandBasedRobot):
@@ -29,7 +26,7 @@ class Marvin(CommandBasedRobot):
         """
         We use this method to declare the various, high-level objects for the
         robot.
-        
+
         For example, we can use the create a CommandGroup object to store the
         various process for our robot to run when we enable it.
         """

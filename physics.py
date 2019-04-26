@@ -8,7 +8,8 @@ from pyfrc.physics import drivetrains
 
 class PhysicsEngine(object):
     """
-       Simulates a 4-wheel mecanum robot using Tank Drive joystick control 
+       Simulates a 4-wheel mecanum robot
+       using Tank Drive joystick control
     """
 
     def __init__(self, physics_controller):
@@ -23,7 +24,7 @@ class PhysicsEngine(object):
         """
             Called when the simulation parameters for the program need to be
             updated.
-            
+
             :param now: The current time as a float
             :param tm_diff: The amount of time that has passed since the last
                             time that this function was called

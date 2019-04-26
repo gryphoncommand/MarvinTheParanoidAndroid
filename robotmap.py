@@ -36,7 +36,7 @@ navx_type = NavXType.SPI
 config = InfoPasser()
 config.centric = True
 
-### Motors
+# Motors
 motors = InfoPasser()
 
 motors.lf = 1
@@ -45,7 +45,7 @@ motors.rf = 3
 motors.rr = 4
 
 
-## Encoders
+# Encoders
 
 encoders = InfoPasser()
 

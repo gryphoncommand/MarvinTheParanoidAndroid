@@ -1,14 +1,7 @@
 from wpilib.command.subsystem import Subsystem
-from wpilib import PIDController
-from wpilib.pidcontroller import PIDController
 
 from ctre import WPI_TalonSRX
-from robotmap import axes
-
-from wpilib.encoder import Encoder
-
-
-from robotmap import motors, encoders
+from robotmap import motors
 
 
 class MecDrive(Subsystem):

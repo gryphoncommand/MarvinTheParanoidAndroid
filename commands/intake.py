@@ -1,9 +1,7 @@
 from wpilib.command import Command
 
 import subsystems
-import oi
 import wpilib
-from robotmap import axes
 
 # from commands.crossbow import Crossbow, PullIntake
 

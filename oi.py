@@ -2,7 +2,6 @@ from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
 
 from commands.crossbow import Crossbow, PullIntake
-from commands.invertmotors import InvertMotors
 from commands.turnrdrive import TurnDrive
 from commands.intake import Intake
 

@@ -12,3 +12,6 @@ header2whatever = "*"
 coverage = "*"
 black = "*"
 flake8 = "*"
+
+[dev-packages]
+black = "*"

@@ -1,7 +1,6 @@
 from wpilib.command import Command
 import subsystems
 import oi
-import wpilib
 
 
 class Shooter(Command):

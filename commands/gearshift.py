@@ -12,9 +12,13 @@ class GearShift(Command):
     def execute(self):
         print("In Gearshift::execute()")
         if self.default:
-            subsystems.mechanisms.shift_gears(wpilib.DoubleSolenoid.Value.kForward)
+            subsystems.mechanisms.shift_gears(
+                wpilib.DoubleSolenoid.Value.kForward
+            )
         else:
-            subsystems.mechanisms.shift_gears(wpilib.DoubleSolenoid.Value.kReverse)
+            subsystems.mechanisms.shift_gears(
+                wpilib.DoubleSolenoid.Value.kReverse
+            )
         self.default = not self.default
         self.isDone = True
 

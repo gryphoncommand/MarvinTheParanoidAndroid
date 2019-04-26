@@ -1,5 +1,3 @@
-import wpilib
-
 from wpilib.command import Command
 from wpilib.pidcontroller import PIDController
 import subsystems
@@ -24,7 +22,7 @@ class TurnDrive(Command):
             print("Pid Write: ", pw)
 
             subsystems.drivetrain.driveCartesian(oi.joystick.getX(),
-                                                 oi.joystick.getY(), 
+                                                 oi.joystick.getY(),
                                                  rotationRate,
                                                  0)
             """
@@ -42,7 +40,14 @@ class TurnDrive(Command):
         self.kD = 0.00
         self.kF = 0.00
 
-        self.PID = PIDController(self.kP, self.kI, self.kD, self.kF, src, set_motors)
+        self.PID = PIDController(
+            self.kP,
+            self.kI,
+            self.kD,
+            self.kF,
+            src,
+            set_motors
+        )
 
         self.PID.setInputRange(0.0, 1.0)
         self.PID.setOutputRange(-0.7, 0.7)
