@@ -41,12 +41,7 @@ class TurnDrive(Command):
         self.kF = 0.00
 
         self.PID = PIDController(
-            self.kP,
-            self.kI,
-            self.kD,
-            self.kF,
-            src,
-            set_motors
+            self.kP, self.kI, self.kD, self.kF, src, set_motors
         )
 
         self.PID.setInputRange(0.0, 1.0)
