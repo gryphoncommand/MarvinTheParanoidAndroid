@@ -23,7 +23,7 @@ See [PEP 8](https://www.python.org/dev/peps/pep-0008/) and [PEP 257](https://www
 
 ## Checks
 
-Code should pass ```pyflakes .``` prior to commit, as static analysis is also checked by CI.
+Code should pass ```flake8 .``` prior to commit, as static analysis is also checked by CI.
 
 ## Running
 
