@@ -123,3 +123,6 @@ venv.bak/
 .AppleDouble
 .LSOverride
 desktop.ini
+
+# Allow for launch configs to be added to Git
+!.vscode/launch.json
