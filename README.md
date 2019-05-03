@@ -35,3 +35,5 @@ Code should pass ```flake8 .``` prior to commit, as static analysis is also chec
 ```python3 robot.py deploy```
 
 To edit any changes in IPs or radios, edit or delete the ```.deploy_cfg``` file.
+
+If your editor is Visual Studio Code (recommended), make sure to select the pipenv interpreter instead of the system-wide interpreter.
