@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Robot with pyfrc simulation",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/robot.py",
+            "args": [ "sim" ],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Robot without simulation",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/robot.py",
+            "args": [ "run" ],
+            "console": "integratedTerminal"
+        }
+    ]
+}

@@ -114,7 +114,7 @@ venv.bak/
 
 # Visual Studio
 .vs/
-.vscode/
+.vscode/*
 *.sln
 *.pyproj
 
