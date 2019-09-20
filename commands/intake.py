@@ -3,12 +3,10 @@ from wpilib.command import Command
 import subsystems
 import wpilib
 
-# from commands.crossbow import Crossbow, PullIntake
-
 
 class Intake(Command):
     """
-    This command runs the intake based on the triggers.
+    Command that runs the intake based on the triggers.
     """
 
     def __init__(self):

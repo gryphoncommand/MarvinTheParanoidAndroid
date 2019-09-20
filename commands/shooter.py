@@ -1,11 +1,16 @@
 from wpilib.command import Command
+
 import subsystems
 import oi
 
 
 class Shooter(Command):
     """
-    SHoots the ball out the top
+    Command that runs the motor that controls the ball intake (aka 'shooter).
+
+    The speed is based on the trigger that is pressed.
+
+    The input speed is more then out speed because of mechanical reasons
     """
 
     def __init__(self):

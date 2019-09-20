@@ -1,61 +1,26 @@
 from wpilib.command import Command
+import wpilib
+import time
 
 import subsystems
-import time
-import wpilib
 
 length = 5
 
 
-# class PullIntake(Command):
-
-#     def __init__(self):
-#         super().__init__('PullIntake')
-#         self.isDone = False
-
-#     def initialize(self):
-#         pass
-
-#     def execute(self):
-#         subsystems.mechanisms.pull_intake()
-#         self.isDone = True
-
-#     def isFinished(self):
-#         return self.isDone
-
-
-class PullIntake(Command):
-    def __init__(self):
-        super().__init__("PullIntake")
-        self.default = False
-        subsystems.mechanisms.pull_intake(wpilib.DoubleSolenoid.Value.kOff)
-
-    def execute(self):
-        print("In Crossbow::execute()")
-        print(self.default)
-        if self.default:
-            subsystems.mechanisms.pull_intake(
-                wpilib.DoubleSolenoid.Value.kForward
-            )
-        else:
-            subsystems.mechanisms.pull_intake(
-                wpilib.DoubleSolenoid.Value.kReverse
-            )
-        self.default = not self.default
-        self.isDone = True
-
-    def isFinished(self):
-        return self.isDone
-
-
 class Crossbow(Command):
     """
-    This command sets the motor for a certain length.
+    Command that controls the 'crossbow', the mechanism that grabs
+    hatches on the back of the robot.
 
+    It takes in two parameters:
+        - 'speed': The speed from -1 to 1 the motor runs at.
+        - 'time': The duration of the command in seconds.
     """
 
     def __init__(self, speed, _len):
         super().__init__("Crossbow")
+
+        # Quantities
         self.stime = None
         self.speed = speed
         self.tlen = _len
@@ -64,9 +29,6 @@ class Crossbow(Command):
         self.stime = time.time()
 
     def execute(self):
-        # if subsystems.mechanisms.get_crossbow() > 0:
-        #     subsystems.mechanisms.set_crossbow(-1 * self.speed)
-        # else:
         subsystems.mechanisms.set_crossbow(self.speed)
         self.isDone = time.time() - self.stime > self.tlen
 
