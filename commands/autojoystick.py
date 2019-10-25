@@ -1,4 +1,3 @@
-import wpilib
 from wpilib.command import Command
 from navx import AHRS
 import time

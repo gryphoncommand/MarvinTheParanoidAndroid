@@ -1,5 +1,5 @@
 from wpilib.command import Command
-import wpilib
+
 import time
 
 import subsystems

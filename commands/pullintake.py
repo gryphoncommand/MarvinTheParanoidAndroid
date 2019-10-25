@@ -1,6 +1,5 @@
 import wpilib
 from wpilib.command import Command
-import time
 
 import subsystems
 
@@ -12,6 +11,7 @@ class PullIntake(Command):
     It operates on a toggle basis, meaning that when you run the command,
     the value of the piston is flipped.
     """
+
     def __init__(self):
         super().__init__("PullIntake")
         self.default = False

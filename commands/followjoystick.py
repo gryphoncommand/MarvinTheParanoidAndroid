@@ -1,7 +1,7 @@
 from wpilib.command import Command
 import subsystems
 import oi
-import wpilib
+
 from navx import AHRS
 from robotmap import config
 import time
@@ -55,8 +55,6 @@ class FollowJoystick(Command):
         return input if abs(input) < 0.02 else 0
 
     def execute(self):
-        if self.stick.getRawButton(3):
-            rotateToAngle = True
         if self.stick.getRawButton(2):
             self.ahrs.reset()
 
